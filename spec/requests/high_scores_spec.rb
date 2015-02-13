@@ -4,7 +4,7 @@ RSpec.describe "HighScores", type: :request do
   describe "GET /high_scores" do
     it "works! (now write some real specs)" do
       get high_scores_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(400)
     end
   end
 end
