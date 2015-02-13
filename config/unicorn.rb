@@ -36,8 +36,8 @@ pid "/var/run/ci-demo.pid"
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "/var/logs/ci-demo.stderr.log"
-stdout_path "/var/logs/ci-demo.stdout.log"
+stderr_path "/var/log/ci-demo.stderr.log"
+stdout_path "/var/log/ci-demo.stdout.log"
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
