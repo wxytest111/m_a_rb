@@ -1,4 +1,6 @@
 CiDemo::Application.routes.draw do
+  resources :high_scores
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
