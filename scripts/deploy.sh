@@ -25,7 +25,7 @@ cd /opt/works/ci-demo
 unzip ci-demo.zip
 cp scripts/unicorn /etc/init.d/
 chmod 777 /etc/init.d/unicorn
-cp sciprts/ci-demo.conf /etc/nginx/conf.d/
+cp scripts/ci-demo.conf /etc/nginx/conf.d/
 /etc/init.d/nginx restart
 ps -ef | grep unicorn | awk '{print $2}'|xargs kill -9
 bundle
