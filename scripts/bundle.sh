@@ -16,6 +16,7 @@ if [ ! -e "ci-demo.zip" ]; then
 fi;
 
 ssh ${USER}@${HOST} /bin/bash << EOF
+cd /opt/works/ci-demo
 bundle
 bundle exec rake db:migrate
 bundle exec rake assets:precompile
