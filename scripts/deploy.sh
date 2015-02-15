@@ -4,6 +4,7 @@ set -e
 
 USER=$1
 HOST=$2
+RAILS_ENV=$3
 
 if [ $# -ne 2 ]; then
   echo usage: scripts/deploy.sh USER HOST
@@ -18,6 +19,7 @@ fi;
 scp ci-demo.zip ${USER}@${HOST}:/tmp
 
 ssh ${USER}@${HOST} /bin/bash << EOF
+export RAILS_ENV=${RAILS_ENV}
 rm -fr /opt/works/ci-demo
 mkdir -p /opt/works/ci-demo
 mv /tmp/ci-demo.zip /opt/works/ci-demo
