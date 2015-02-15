@@ -26,6 +26,6 @@ unzip ci-demo.zip
 cp scripts/unicorn /etc/init.d/
 chmod 777 /etc/init.d/unicorn
 cp scripts/ci-demo.conf /etc/nginx/conf.d/
-cp scripts/default.conf /etc/nginx/conf.d/
+rm -fr /etc/nginx/conf.d/default.conf
 EOF
 
