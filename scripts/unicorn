@@ -16,7 +16,7 @@ DAEMON=unicorn
 DAEMON_OPTS="-c /opt/works/ci-demo/config/unicorn.rb -D"
 NAME=unicorn
 DESC="unicorn app for ci-demo"
-PID=/var/run/unicorn.pid
+PID=/var/run/ci-demo.pid
 
 case "$1" in
   start)
