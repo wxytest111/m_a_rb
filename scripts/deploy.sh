@@ -6,8 +6,8 @@ USER=$1
 HOST=$2
 RAILS_ENV=$3
 
-if [ $# -ne 2 ]; then
-  echo usage: scripts/deploy.sh USER HOST
+if [ $# -ne 3 ]; then
+  echo usage: scripts/deploy.sh USER HOST RAILS_ENV
   exit -1
 fi;
 
