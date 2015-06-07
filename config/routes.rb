@@ -1,4 +1,8 @@
-CiDemo::Application.routes.draw do
+M3::Application.routes.draw do
+  resources :beauticians
+
+  resources :customers
+
   root 'welcome#index'
   get 'welcome/index'
 

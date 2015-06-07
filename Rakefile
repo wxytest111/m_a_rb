@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-CiDemo::Application.load_tasks
+M3::Application.load_tasks

@@ -13,10 +13,10 @@
 ### END INIT INFO
 
 DAEMON=unicorn
-DAEMON_OPTS="-c /opt/works/ci-demo/config/unicorn.rb -D"
+DAEMON_OPTS="-c /opt/works/m3/config/unicorn.rb -D"
 NAME=unicorn
-DESC="unicorn app for ci-demo"
-PID=/var/run/ci-demo.pid
+DESC="unicorn app for m3"
+PID=/var/run/m3.pid
 
 case "$1" in
   start)

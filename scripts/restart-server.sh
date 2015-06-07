@@ -2,23 +2,18 @@
 
 set -e
 
-USER=$1
-HOST=$2
+if [ -f ~/.bash_profile ]; then
+  . ~/.bash_profile
+fi
 
-if [ $# -ne 2 ]; then
-  echo usage: scripts/deploy.sh USER HOST
-  exit -1
-fi;
+if [ -f /var/run/m3.pid ]; then
+  pid=`cat /var/run/m3.pid`
+  echo $pid
+    if [ -d /proc/$pid ]; then
+      ps -ef | grep unicorn | grep -v grep | cut -c 9-15 | xargs kill -9
+    fi
+fi
 
-if [ ! -e "ci-demo.zip" ]; then
-  echo "cannot find ci-demo.zip to deploy"
-  exit -1
-fi;
+bundle exec rake assets:clean assets:precompile
 
-ssh ${USER}@${HOST} /bin/bash << EOF
-ps -ef | grep unicorn | awk '{print $2}'| xargs kill -9
-/etc/init.d/unicorn stop
-/etc/init.d/unicorn start
-/etc/init.d/nginx restart
-EOF
-
+unicorn -c /opt/works/m3/config/unicorn.rb -D

@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213080655) do
+ActiveRecord::Schema.define(version: 20150607030416) do
 
-  create_table "high_scores", force: :cascade do |t|
-    t.string   "game"
-    t.integer  "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "beauticians", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "mobile",     limit: 255
+    t.string   "id_card",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "mobile",     limit: 255
+    t.integer  "gender",     limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

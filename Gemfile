@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'activesupport-json_encoder'
+
+gem 'mysql2'
 
 gem 'rspec'
 
@@ -23,15 +24,22 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
 group :test, :development do
+  gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+end
+
+group :development do
+  gem 'byebug'
+end
+
+group :production do
+  gem 'unicorn'
 end
 
 group :doc do
@@ -39,7 +47,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'unicorn'
+gem 'bootstrap-sass'
+
+gem 'haml-rails', '~> 0.4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
