@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-Gemfile.lock
 m3.zip
 # Ignore the default SQLite database.
 /db/*.sqlite3
