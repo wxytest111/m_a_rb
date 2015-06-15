@@ -3,6 +3,7 @@ class AdvertisementsController < ApplicationController
 
   def list
     @advertisements = Advertisement.all
+    @result = 1
   end
 
   # GET /advertisements
