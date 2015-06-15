@@ -1,4 +1,11 @@
 M3::Application.routes.draw do
+  resources :advertisements do
+    collection do
+      post 'list'
+      get 'list'
+    end
+  end
+
   resources :check_codes
 
   resources :tokens
@@ -53,7 +60,7 @@ M3::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
