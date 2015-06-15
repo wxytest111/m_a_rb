@@ -5,7 +5,11 @@ RSpec.describe "customers/show", type: :view do
     @customer = assign(:customer, Customer.create!(
       :name => "Name",
       :mobile => "Mobile",
-      :gender => 1
+      :address => "Address",
+      :description => "MyText",
+      :gender => 1,
+      :nick_name => "Nick Name",
+      :password => "Password"
     ))
   end
 
@@ -13,6 +17,10 @@ RSpec.describe "customers/show", type: :view do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Mobile/)
+    expect(rendered).to match(/Address/)
+    expect(rendered).to match(/MyText/)
     expect(rendered).to match(/1/)
+    expect(rendered).to match(/Nick Name/)
+    expect(rendered).to match(/Password/)
   end
 end

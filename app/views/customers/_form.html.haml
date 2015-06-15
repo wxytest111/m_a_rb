@@ -13,7 +13,19 @@
     = f.label :mobile
     = f.text_field :mobile
   .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
     = f.label :gender
     = f.number_field :gender
+  .field
+    = f.label :nick_name
+    = f.text_field :nick_name
+  .field
+    = f.label :password
+    = f.text_field :password
   .actions
     = f.submit 'Save'

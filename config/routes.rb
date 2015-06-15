@@ -1,4 +1,10 @@
 M3::Application.routes.draw do
+  resources :check_codes
+
+  resources :tokens
+
+  resources :workers
+
   resources :beauticians
 
   resources :customers
@@ -6,7 +12,7 @@ M3::Application.routes.draw do
   root 'welcome#index'
   get 'welcome/index'
 
-  match ':controller/:action/', :via => [:get, :post]
+  match ':controller/:action/', :via => [:get, :post, :options]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

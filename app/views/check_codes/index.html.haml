@@ -1,0 +1,23 @@
+%h1 Listing check_codes
+
+%table
+  %thead
+    %tr
+      %th Code
+      %th Mobile
+      %th
+      %th
+      %th
+
+  %tbody
+    - @check_codes.each do |check_code|
+      %tr
+        %td= check_code.code
+        %td= check_code.mobile
+        %td= link_to 'Show', check_code
+        %td= link_to 'Edit', edit_check_code_path(check_code)
+        %td= link_to 'Destroy', check_code, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Check code', new_check_code_path

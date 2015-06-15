@@ -5,7 +5,11 @@ RSpec.describe "customers/new", type: :view do
     assign(:customer, Customer.new(
       :name => "MyString",
       :mobile => "MyString",
-      :gender => 1
+      :address => "MyString",
+      :description => "MyText",
+      :gender => 1,
+      :nick_name => "MyString",
+      :password => "MyString"
     ))
   end
 
@@ -18,7 +22,15 @@ RSpec.describe "customers/new", type: :view do
 
       assert_select "input#customer_mobile[name=?]", "customer[mobile]"
 
+      assert_select "input#customer_address[name=?]", "customer[address]"
+
+      assert_select "textarea#customer_description[name=?]", "customer[description]"
+
       assert_select "input#customer_gender[name=?]", "customer[gender]"
+
+      assert_select "input#customer_nick_name[name=?]", "customer[nick_name]"
+
+      assert_select "input#customer_password[name=?]", "customer[password]"
     end
   end
 end

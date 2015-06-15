@@ -11,22 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607030416) do
+ActiveRecord::Schema.define(version: 20150615004856) do
 
-  create_table "beauticians", force: :cascade do |t|
-    t.string   "name",       limit: 255
+  create_table "check_codes", force: :cascade do |t|
+    t.string   "code",       limit: 255
     t.string   "mobile",     limit: 255
-    t.string   "id_card",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "mobile",     limit: 255
-    t.integer  "gender",     limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",        limit: 255
+    t.string   "mobile",      limit: 255
+    t.string   "address",     limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "gender",      limit: 4,     default: 0, null: false
+    t.string   "nick_name",   limit: 255
+    t.string   "password",    limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.string   "token",       limit: 255
+    t.integer  "customer_id", limit: 4
+    t.integer  "worker_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "workers", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "mobile",      limit: 255
+    t.string   "avatar",      limit: 255
+    t.float    "star",        limit: 24
+    t.integer  "gender",      limit: 4,     default: 0, null: false
+    t.text     "description", limit: 65535
+    t.string   "skills",      limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
 end

@@ -7,8 +7,20 @@
   %b Mobile:
   = @customer.mobile
 %p
+  %b Address:
+  = @customer.address
+%p
+  %b Description:
+  = @customer.description
+%p
   %b Gender:
   = @customer.gender
+%p
+  %b Nick name:
+  = @customer.nick_name
+%p
+  %b Password:
+  = @customer.password
 
 = link_to 'Edit', edit_customer_path(@customer)
 \|

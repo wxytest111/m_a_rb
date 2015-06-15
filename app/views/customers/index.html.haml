@@ -5,7 +5,11 @@
     %tr
       %th Name
       %th Mobile
+      %th Address
+      %th Description
       %th Gender
+      %th Nick name
+      %th Password
       %th
       %th
       %th
@@ -15,7 +19,11 @@
       %tr
         %td= customer.name
         %td= customer.mobile
+        %td= customer.address
+        %td= customer.description
         %td= customer.gender
+        %td= customer.nick_name
+        %td= customer.password
         %td= link_to 'Show', customer
         %td= link_to 'Edit', edit_customer_path(customer)
         %td= link_to 'Destroy', customer, :method => :delete, :data => { :confirm => 'Are you sure?' }
