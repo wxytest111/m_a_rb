@@ -1,6 +1,14 @@
 class WorkersController < ApplicationController
+  before_filter :set_headers
   before_action :set_worker, only: [:show, :edit, :update, :destroy]
 
+  def list
+    customer_id = params[:customer_id]
+    token = params[:token]
+    page = params[:page]
+    @result = 1
+    @workers = Worker.all
+  end
   # GET /workers
   # GET /workers.json
   def index
@@ -10,6 +18,7 @@ class WorkersController < ApplicationController
   # GET /workers/1
   # GET /workers/1.json
   def show
+    @result = 1
   end
 
   # GET /workers/new
@@ -69,6 +78,6 @@ class WorkersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def worker_params
-      params.require(:worker).permit(:name, :mobile, :avatar, :star, :gender, :description, :skills)
+      params.require(:worker).permit(:name, :mobile, :avatar, :pic, :address, :password, :star, :gender, :description, :skills)
     end
 end

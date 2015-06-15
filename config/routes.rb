@@ -10,7 +10,12 @@ M3::Application.routes.draw do
 
   resources :tokens
 
-  resources :workers
+  resources :workers do
+    collection do
+      post 'list'
+      get 'list'
+    end
+  end
 
   resources :beauticians
 

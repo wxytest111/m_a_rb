@@ -16,8 +16,14 @@
     = f.label :avatar
     = f.text_field :avatar
   .field
+    = f.label :pic
+    = f.text_field :pic
+  .field
     = f.label :star
     = f.text_field :star
+  .field
+    = f.label :address
+    = f.text_field :address
   .field
     = f.label :gender
     = f.number_field :gender
@@ -27,5 +33,11 @@
   .field
     = f.label :skills
     = f.text_field :skills
+  .field
+    = f.label :status
+    = f.text_field :status
+  .field
+    = f.label :password
+    = f.text_field :password
   .actions
     = f.submit 'Save'

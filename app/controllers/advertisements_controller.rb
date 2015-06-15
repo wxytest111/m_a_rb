@@ -1,4 +1,5 @@
 class AdvertisementsController < ApplicationController
+  before_filter :set_headers
   before_action :set_advertisement, only: [:show, :edit, :update, :destroy]
 
   def list
