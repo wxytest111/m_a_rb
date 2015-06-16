@@ -1,0 +1,35 @@
+%h1 Listing appointments
+
+%table
+  %thead
+    %tr
+      %th Status
+      %th Date
+      %th Start time
+      %th End time
+      %th Address
+      %th Product
+      %th Service
+      %th Customer
+      %th
+      %th
+      %th
+
+  %tbody
+    - @appointments.each do |appointment|
+      %tr
+        %td= appointment.status
+        %td= appointment.date
+        %td= appointment.start_time
+        %td= appointment.end_time
+        %td= appointment.address
+        %td= appointment.product.name
+        %td= appointment.service.name
+        %td= appointment.customer.mobile
+        %td= link_to 'Show', appointment
+        %td= link_to 'Edit', edit_appointment_path(appointment)
+        %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Appointment', new_appointment_path

@@ -1,0 +1,25 @@
+%h1 Listing grabs
+
+%table
+  %thead
+    %tr
+      %th Worker
+      %th Appointment
+      %th Status
+      %th
+      %th
+      %th
+
+  %tbody
+    - @grabs.each do |grab|
+      %tr
+        %td= grab.worker
+        %td= grab.appointment
+        %td= grab.status
+        %td= link_to 'Show', grab
+        %td= link_to 'Edit', edit_grab_path(grab)
+        %td= link_to 'Destroy', grab, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Grab', new_grab_path

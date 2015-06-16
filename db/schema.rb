@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616015733) do
+ActiveRecord::Schema.define(version: 20150616030123) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "url",        limit: 255
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 20150616015733) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "status",      limit: 4,   default: 0, null: false
+    t.date     "date"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.string   "address",     limit: 255
+    t.integer  "product_id",  limit: 4
+    t.integer  "service_id",  limit: 4
+    t.integer  "customer_id", limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "appointments", ["customer_id"], name: "index_appointments_on_customer_id", using: :btree
+  add_index "appointments", ["product_id"], name: "index_appointments_on_product_id", using: :btree
+  add_index "appointments", ["service_id"], name: "index_appointments_on_service_id", using: :btree
 
   create_table "check_codes", force: :cascade do |t|
     t.string   "code",       limit: 255
@@ -38,6 +55,17 @@ ActiveRecord::Schema.define(version: 20150616015733) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
+
+  create_table "grabs", force: :cascade do |t|
+    t.integer  "worker_id",      limit: 4
+    t.integer  "appointment_id", limit: 4
+    t.integer  "status",         limit: 4, default: 0, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "grabs", ["appointment_id"], name: "index_grabs_on_appointment_id", using: :btree
+  add_index "grabs", ["worker_id"], name: "index_grabs_on_worker_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -85,4 +113,9 @@ ActiveRecord::Schema.define(version: 20150616015733) do
     t.integer  "miss",        limit: 4
   end
 
+  add_foreign_key "appointments", "customers"
+  add_foreign_key "appointments", "products"
+  add_foreign_key "appointments", "services"
+  add_foreign_key "grabs", "appointments"
+  add_foreign_key "grabs", "workers"
 end

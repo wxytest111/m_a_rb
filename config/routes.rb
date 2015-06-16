@@ -1,4 +1,13 @@
 M3::Application.routes.draw do
+  resources :grabs
+
+  resources :appointments do
+    collection do
+      post 'list'
+      get 'list'
+    end
+  end
+
   resources :services do
     collection do
       post 'list'

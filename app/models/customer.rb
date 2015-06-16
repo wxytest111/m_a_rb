@@ -4,4 +4,5 @@ class Customer < ActiveRecord::Base
   validates :mobile, uniqueness: { message: '该手机已经被注册,请您直接登录' }
 
   has_one :token
+  has_many :appointments
 end
