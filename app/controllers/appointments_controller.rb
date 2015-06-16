@@ -1,6 +1,106 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
+  def finished
+    mobile = params[:mobile]
+    token = params[:token]
+    id = params[:id]
+    user_type = params[:user_type].to_i
+    appointment = Appointment.find(id)
+    if user_type == 1
+      customer = Customer.find_by_mobile(mobile)
+      if appointment.customer_id == customer.id && !(['cancel'].include? appointment.status)
+        if appointment.workers.size > 0
+          appointment.status = 'finished'
+          appointment.save!
+          appointment.grabs.each do |grab|
+            if grab.status == 'begin'
+              grab.status = 'finished'
+              grab.save!
+            end
+          end
+          @result = 1
+        else
+          @result = 0
+          @error_code = 10007
+          @error_msg = '美容师未响应您的预约.'
+        end
+      else
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.'
+      end
+    else
+      worker = Worker.find_by_mobile(mobile)
+      if ['cancel','other_worker'].include? appointment.status
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.请和顾客联系.'
+      else
+        if appointment.workers.include? worker
+          grab = worker.grabs.find_by_appointment_id(id)
+          grab.status = 'finished'
+          grab.save!
+          @result = 1
+        else
+          @result = 0
+          @error_code = 10002
+          @error_msg = '您无权操作该用.'
+        end
+      end
+    end
+  end
+
+  def begin
+    mobile = params[:mobile]
+    token = params[:token]
+    id = params[:id]
+    user_type = params[:user_type].to_i
+    appointment = Appointment.find(id)
+    if user_type == 1
+      customer = Customer.find_by_mobile(mobile)
+      if appointment.customer_id == customer.id && !(['finished','cancel'].include? appointment.status)
+        if appointment.workers.size > 0
+          appointment.status = 'begin'
+          appointment.save!
+          appointment.grabs.each do |grab|
+            if grab.status == 'ready'
+              grab.status = 'begin'
+              grab.save!
+            end
+          end
+          @result = 1
+        else
+          @result = 0
+          @error_code = 10007
+          @error_msg = '美容师未响应您的预约.'
+        end
+      else
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.'
+      end
+    else
+      worker = Worker.find_by_mobile(mobile)
+      if ['finished','cancel','other_worker'].include? appointment.status
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.请和顾客联系.'
+      else
+        if appointment.workers.include? worker
+          grab = worker.grabs.find_by_appointment_id(id)
+          grab.status = 'begin'
+          grab.save!
+          @result = 1
+        else
+          @result = 0
+          @error_code = 10002
+          @error_msg = '您无权操作该用.'
+        end
+      end
+    end
+  end
+
   def confirm
     mobile = params[:mobile]
     token = params[:token]
