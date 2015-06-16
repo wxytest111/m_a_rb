@@ -1,6 +1,44 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
+  def cancel
+    mobile = params[:mobile]
+    token = params[:token]
+    id = params[:id]
+    user_type = params[:user_type].to_i
+    appointment = Appointment.find(id)
+    if user_type == 1
+      customer = Customer.find_by_mobile(mobile)
+      if appointment.customer_id == customer.id && !(['finished','begin'].include? appointment.status)
+        appointment.status = 'cancel'
+        appointment.save!
+        @result = 1
+      else
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.'
+      end
+    else
+      worker = Worker.find_by_mobile(mobile)
+      if ['ready','finished','begin','cancel','other_worker'].include? appointment.status
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.请和顾客联系.'
+      else
+        if appointment.workers.include? worker
+          grab = worker.grabs.find_by_appointment_id(id)
+          grab.status = 'cancel'
+          grab.save!
+          @result = 1
+        else
+          @result = 0
+          @error_code = 10002
+          @error_msg = '您无权操作该用.'
+        end
+      end
+    end
+  end
+
   def make
     @appointment = Appointment.new make_params
     @appointments = []
