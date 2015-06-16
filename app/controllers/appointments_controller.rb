@@ -2,10 +2,6 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def make
-    require 'byebug';byebug
-
-
-
     appointment = Appointment.new params
   end
 
@@ -16,7 +12,8 @@ class AppointmentsController < ApplicationController
     user_type = params[:user_type].to_i
     if user_type == 1
       customer = Customer.find_by_mobile(mobile)
-      @appointments = customer.appointments
+      # require 'byebug';byebug
+      @appointments = customer.appointments.order('status asc')
     else
 
     end

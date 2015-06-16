@@ -14,10 +14,10 @@
     = f.date_select :date
   .field
     = f.label :start_time
-    = f.time_select :start_time
+    = f.time_select :start_time, :ignore_date => true
   .field
     = f.label :end_time
-    = f.time_select :end_time
+    = f.time_select :end_time, :ignore_date => true
   .field
     = f.label :address
     = f.text_field :address
