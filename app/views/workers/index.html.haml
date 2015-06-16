@@ -3,6 +3,7 @@
 %table
   %thead
     %tr
+      %th Id
       %th Name
       %th Mobile
       %th Avatar
@@ -17,6 +18,7 @@
   %tbody
     - @workers.each do |worker|
       %tr
+        %td= worker.id
         %td= worker.name
         %td= worker.mobile
         %td= worker.avatar

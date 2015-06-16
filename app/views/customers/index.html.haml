@@ -3,6 +3,7 @@
 %table
   %thead
     %tr
+      %th ID
       %th Name
       %th Mobile
       %th Address
@@ -17,6 +18,7 @@
   %tbody
     - @customers.each do |customer|
       %tr
+        %td= customer.id
         %td= customer.name
         %td= customer.mobile
         %td= customer.address
