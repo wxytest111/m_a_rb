@@ -2,7 +2,16 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def make
-    appointment = Appointment.new params
+    @appointment = Appointment.new make_params
+    @appointments = []
+    if @appointment.save!
+      @appointments << @appointment
+      @result = 1
+    else
+      @result = 0
+      @error_code = 10006
+      @error_msg = '发起预约失败.'
+    end
   end
 
   def recent
@@ -111,5 +120,9 @@ class AppointmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def appointment_params
       params.require(:appointment).permit(:status, :date, :start_time, :end_time, :address, :product_id, :service_id, :customer_id)
+    end
+
+    def make_params
+      params.permit(:status, :date, :start_time, :end_time, :address, :product_id, :service_id, :customer_id)
     end
 end
