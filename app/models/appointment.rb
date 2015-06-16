@@ -1,5 +1,5 @@
 class Appointment < ActiveRecord::Base
-  enum status: [:start, :waiting, :ready, :begin, :finished]
+  enum status: [:start, :waiting, :ready, :begin, :finished, :abort]
 
   belongs_to :product
   belongs_to :service

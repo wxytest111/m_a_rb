@@ -3,8 +3,8 @@ M3::Application.routes.draw do
 
   resources :appointments do
     collection do
-      post 'list'
-      get 'list'
+      post 'list','recent'
+      get 'list','recent'
     end
   end
 

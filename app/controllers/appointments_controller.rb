@@ -5,6 +5,28 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.new params
   end
 
+  def recent
+    mobile = params[:mobile]
+    token = params[:token]
+    page = params[:page]
+    user_type = params[:user_type].to_i
+    if user_type == 1
+      @result = 0
+      @error_code = 10002
+      @error_msg = '您无权操作该用.'
+    else
+      worker = Worker.find_by_mobile(mobile)
+      @appointments = []
+      results = Appointment.where('status=0 or status=1')
+      results.each do |result|
+        unless result.workers.include? worker
+          @appointments << result
+        end
+      end
+      @result = 1
+    end
+  end
+
   def list
     mobile = params[:mobile]
     token = params[:token]
