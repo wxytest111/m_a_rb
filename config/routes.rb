@@ -1,4 +1,11 @@
 M3::Application.routes.draw do
+  resources :services do
+    collection do
+      post 'list'
+      get 'list'
+    end
+  end
+
   resources :products do
     collection do
       post 'list'
