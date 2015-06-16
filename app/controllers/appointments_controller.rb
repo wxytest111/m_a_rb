@@ -12,10 +12,10 @@ class AppointmentsController < ApplicationController
     user_type = params[:user_type].to_i
     if user_type == 1
       customer = Customer.find_by_mobile(mobile)
-      # require 'byebug';byebug
       @appointments = customer.appointments.order('status asc')
     else
-
+      worker = Worker.find_by_mobile(mobile)
+      @appointments = worker.appointments.order('status asc')
     end
     @result = 1
   end
