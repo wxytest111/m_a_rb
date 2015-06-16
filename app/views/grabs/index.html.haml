@@ -13,8 +13,8 @@
   %tbody
     - @grabs.each do |grab|
       %tr
-        %td= grab.worker
-        %td= grab.appointment
+        %td= grab.worker.name
+        %td= grab.appointment.status
         %td= grab.status
         %td= link_to 'Show', grab
         %td= link_to 'Edit', edit_grab_path(grab)

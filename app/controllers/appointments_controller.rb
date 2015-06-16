@@ -15,7 +15,6 @@ class AppointmentsController < ApplicationController
     page = params[:page]
     user_type = params[:user_type].to_i
     if user_type == 1
-      # require 'byebug';byebug
       customer = Customer.find_by_mobile(mobile)
       @appointments = customer.appointments
     else

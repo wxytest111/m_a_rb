@@ -7,13 +7,13 @@
           %li= msg
 
   .field
-    = f.label :worker
-    = f.text_field :worker
+    = f.label :worker_id
+    = f.text_field :worker_id
   .field
-    = f.label :appointment
-    = f.text_field :appointment
+    = f.label :appointment_id
+    = f.text_field :appointment_id
   .field
     = f.label :status
-    = f.number_field :status
+    = f.text_field :status
   .actions
     = f.submit 'Save'

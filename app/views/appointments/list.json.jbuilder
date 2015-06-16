@@ -7,4 +7,7 @@ json.data @appointments do |appointment|
   json.product appointment.product.name
   json.service appointment.service.name
   json.customer appointment.customer, :id, :mobile, :address
+  json.workers appointment.workers do |worker|
+    json.extract! worker, :id, :name, :mobile, :star, :avatar, :description
+  end
 end
