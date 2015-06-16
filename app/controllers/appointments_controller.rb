@@ -8,12 +8,21 @@ class AppointmentsController < ApplicationController
     user_type = params[:user_type].to_i
     appointment = Appointment.find(id)
     if user_type == 1
-      worker_id = params[:worker_id]
+      worker = Worker.find(params[:worker_id])
       customer = Customer.find_by_mobile(mobile)
       if appointment.customer_id == customer.id && !(['finished','begin','cancel'].include? appointment.status)
-        appointment.status = 'ready'
-        appointment.save!
-        @result = 1
+        if appointment.workers.include? worker
+          appointment.status = 'ready'
+          appointment.save!
+          grab = worker.grabs.find_by_appointment_id(id)
+          grab.status = 'ready'
+          grab.save!
+          @result = 1
+        else
+          @result = 0
+          @error_code = 10007
+          @error_msg = '该美容师未响应您的预约.'
+        end
       else
         @result = 0
         @error_code = 10002
