@@ -3,7 +3,8 @@
 %table
   %thead
     %tr
-      %th Worker
+      %th Name
+      %th Worker_ID
       %th Appointment
       %th Status
       %th
@@ -14,7 +15,8 @@
     - @grabs.each do |grab|
       %tr
         %td= grab.worker.name
-        %td= grab.appointment.status
+        %td= grab.worker.id
+        %td= grab.appointment.id
         %td= grab.status
         %td= link_to 'Show', grab
         %td= link_to 'Edit', edit_grab_path(grab)

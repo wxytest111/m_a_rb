@@ -1,6 +1,35 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
+  def detail
+    mobile = params[:mobile]
+    token = params[:token]
+    id = params[:id]
+    user_type = params[:user_type].to_i
+    appointment = Appointment.find(id)
+    if user_type == 1
+      customer = Customer.find_by_mobile(mobile)
+      if appointment.customer_id == customer.id
+        @appointments = [appointment]
+        @result = 1
+      else
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.'
+      end
+    else
+      worker = Worker.find_by_mobile(mobile)
+      if appointment.workers.include? worker
+        @appointments = [appointment]
+        @result = 1
+      else
+        @result = 0
+        @error_code = 10002
+        @error_msg = '您无权操作该用.'
+      end
+    end
+  end
+
   def finished
     mobile = params[:mobile]
     token = params[:token]
@@ -114,9 +143,17 @@ class AppointmentsController < ApplicationController
         if appointment.workers.include? worker
           appointment.status = 'ready'
           appointment.save!
-          grab = worker.grabs.find_by_appointment_id(id)
-          grab.status = 'ready'
-          grab.save!
+          appointment.grabs.each do |grab|
+            if grab.worker.id == worker.id
+              grab.status = 'ready'
+            else
+              grab.status = 'other_worker'
+            end
+              grab.save!
+          end
+          # grab = worker.grabs.find_by_appointment_id(id)
+          # grab.status = 'ready'
+          # grab.save!
           @result = 1
         else
           @result = 0
