@@ -3,9 +3,10 @@ class WorkersController < ApplicationController
   before_action :set_worker, only: [:show, :edit, :update, :destroy]
 
   def list
-    customer_id = params[:customer_id]
+    mobile = params[:mobile]
     token = params[:token]
     page = params[:page]
+    user_type = params[:user_type]
     @result = 1
     @workers = Worker.all
   end

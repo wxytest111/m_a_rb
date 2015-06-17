@@ -151,9 +151,6 @@ class AppointmentsController < ApplicationController
             end
               grab.save!
           end
-          # grab = worker.grabs.find_by_appointment_id(id)
-          # grab.status = 'ready'
-          # grab.save!
           @result = 1
         else
           @result = 0
