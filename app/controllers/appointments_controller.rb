@@ -228,7 +228,8 @@ class AppointmentsController < ApplicationController
   end
 
   def make
-    @appointment = Appointment.new make_params
+    customer = Customer.find_by_mobile(params[:mobile])
+    @appointment = Appointment.new make_params.merge({customer_id: customer.id})
     @appointments = []
     if @appointment.save!
       @appointments << @appointment
@@ -349,6 +350,6 @@ class AppointmentsController < ApplicationController
     end
 
     def make_params
-      params.permit(:status, :date, :start_time, :end_time, :address, :product_id, :service_id, :customer_id)
+      params.permit(:status, :date, :start_time, :end_time, :address, :product_id, :service_id)
     end
 end
