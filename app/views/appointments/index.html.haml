@@ -25,8 +25,14 @@
         %td= appointment.start_time
         %td= appointment.end_time
         %td= appointment.address
-        %td= appointment.product.name
-        %td= appointment.service.name
+        - if appointment.product
+          %td= appointment.product.name
+        - else
+          %td 无产品
+        - if appointment.service
+          %td= appointment.service.name
+        - else
+          %td 无产品
         %td= appointment.customer.mobile
         %td= link_to 'Show', appointment
         %td= link_to 'Edit', edit_appointment_path(appointment)
