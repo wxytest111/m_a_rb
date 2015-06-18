@@ -8,5 +8,5 @@ json.data @appointments do |appointment|
   json.end_time appointment.end_time.strftime('%H:%M:%S')
   json.product appointment.product, :id, :name, :pic
   json.service appointment.service, :id, :name, :price
-  json.customer appointment.customer, :id, :mobile, :address
+  json.customer appointment.customer, :id, :mobile, :address, :nick_name
 end
