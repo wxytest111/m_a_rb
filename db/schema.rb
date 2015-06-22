@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622022521) do
+ActiveRecord::Schema.define(version: 20150622025255) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "url",        limit: 255
@@ -77,20 +77,29 @@ ActiveRecord::Schema.define(version: 20150622022521) do
 
   add_index "product_details", ["product_id"], name: "index_product_details_on_product_id", using: :btree
 
-  create_table "products", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.string   "pic",            limit: 255
-    t.string   "address",        limit: 255
-    t.text     "description",    limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "duration",       limit: 255
-    t.integer  "original_price", limit: 4
-    t.integer  "current_price",  limit: 4
-    t.string   "service_pic",    limit: 255
-    t.string   "applicable",     limit: 255
-    t.string   "effect",         limit: 255
+  create_table "product_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "pic",             limit: 255
+    t.string   "address",         limit: 255
+    t.text     "description",     limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "duration",        limit: 255
+    t.integer  "original_price",  limit: 4
+    t.integer  "current_price",   limit: 4
+    t.string   "service_pic",     limit: 255
+    t.string   "applicable",      limit: 255
+    t.string   "effect",          limit: 255
+    t.integer  "product_type_id", limit: 4
+  end
+
+  add_index "products", ["product_type_id"], name: "index_products_on_product_type_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.float    "price",       limit: 24
@@ -145,5 +154,6 @@ ActiveRecord::Schema.define(version: 20150622022521) do
   add_foreign_key "grabs", "appointments"
   add_foreign_key "grabs", "workers"
   add_foreign_key "product_details", "products"
+  add_foreign_key "products", "product_types"
   add_foreign_key "steps", "products"
 end

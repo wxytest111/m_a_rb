@@ -7,16 +7,31 @@
           %li= msg
 
   .field
-    = f.label :name
+    = f.label :product_type_id, '所属分类'
+    = f.collection_select :product_type_id, ProductType.all, :id, :name, {:selected=>(@product.product_type_id)}
+  .field
+    = f.label :name, '名称'
     = f.text_field :name
   .field
-    = f.label :pic
+    = f.label :pic, '产品宣传图片'
     = f.text_field :pic
   .field
-    = f.label :address
-    = f.text_field :address
+    = f.label :original_price, '原价'
+    = f.number_field :original_price
   .field
-    = f.label :description
-    = f.text_area :description
+    = f.label :current_price, '现价'
+    = f.number_field :current_price
+  .field
+    = f.label :duration, '时长'
+    = f.text_field :duration
+  .field
+    = f.label :applicable, '适用皮肤'
+    = f.text_area :applicable
+  .field
+    = f.label :effect, '效果'
+    = f.text_area :effect
+  .field
+    = f.label :service_pic, '服务流程图片'
+    = f.text_field :service_pic
   .actions
     = f.submit 'Save'

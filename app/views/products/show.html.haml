@@ -1,17 +1,25 @@
 %p#notice= notice
-
 %p
-  %b Name:
+  %b 分类:
+  = @product.product_type.name
+%p
+  %b 产品名称:
   = @product.name
 %p
-  %b Pic:
+  %b 产品图片:
   = @product.pic
 %p
-  %b Address:
-  = @product.address
+  %b 原价:
+  = @product.original_price
 %p
-  %b Description:
-  = @product.description
+  %b 现价:
+  = @product.current_price
+%p
+  %b 适用:
+  = @product.applicable
+%p
+  %b 效果:
+  = @product.effect
 
 = link_to 'Edit', edit_product_path(@product)
 \|

@@ -1,4 +1,6 @@
 M3::Application.routes.draw do
+  resources :product_types
+
   resources :product_details
 
   resources :steps

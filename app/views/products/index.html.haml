@@ -3,10 +3,11 @@
 %table
   %thead
     %tr
+      %th 分类
       %th Name
       %th Pic
-      %th Address
-      %th Description
+      %th applicable
+      %th effect
       %th
       %th
       %th
@@ -14,10 +15,11 @@
   %tbody
     - @products.each do |product|
       %tr
+        %td= product.product_type.name
         %td= product.name
         %td= product.pic
-        %td= product.address
-        %td= product.description
+        %td= product.applicable
+        %td= product.effect
         %td= link_to 'Show', product
         %td= link_to 'Edit', edit_product_path(product)
         %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
