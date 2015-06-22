@@ -152,6 +152,7 @@ class AppointmentsController < ApplicationController
               grab.save!
           end
           @result = 1
+          @appointments =[appointment]
         else
           @result = 0
           @error_code = 10007
@@ -185,6 +186,7 @@ class AppointmentsController < ApplicationController
           grab.save!
           @result = 1
         end
+        @appointments =[appointment]
       end
     end
   end
@@ -252,13 +254,13 @@ class AppointmentsController < ApplicationController
       @error_msg = '您无权操作该用.'
     else
       worker = Worker.find_by_mobile(mobile)
-      @appointments = []
-      results = Appointment.where('status=0 or status=1')
-      results.each do |result|
-        unless result.workers.include? worker
-          @appointments << result
-        end
-      end
+      # @appointments = []
+      @appointments = Appointment.where('status=0 or status=1')
+      # results.each do |result|
+      #   unless result.workers.include? worker
+      #     @appointments << result
+      #   end
+      # end
       @result = 1
     end
   end
