@@ -1,4 +1,6 @@
 M3::Application.routes.draw do
+  resources :steps
+
   resources :grabs
 
   resources :appointments do

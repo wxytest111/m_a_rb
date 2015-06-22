@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616030123) do
+ActiveRecord::Schema.define(version: 20150622015403) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "url",        limit: 255
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20150616030123) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.integer  "number",     limit: 4
+    t.string   "name",       limit: 255
+    t.integer  "product_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "steps", ["product_id"], name: "index_steps_on_product_id", using: :btree
+
   create_table "tokens", force: :cascade do |t|
     t.string   "token",       limit: 255
     t.integer  "customer_id", limit: 4
@@ -118,4 +128,5 @@ ActiveRecord::Schema.define(version: 20150616030123) do
   add_foreign_key "appointments", "services"
   add_foreign_key "grabs", "appointments"
   add_foreign_key "grabs", "workers"
+  add_foreign_key "steps", "products"
 end

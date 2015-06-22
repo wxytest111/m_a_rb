@@ -1,0 +1,25 @@
+%h1 Listing steps
+
+%table
+  %thead
+    %tr
+      %th Number
+      %th Name
+      %th Product
+      %th
+      %th
+      %th
+
+  %tbody
+    - @steps.each do |step|
+      %tr
+        %td= step.number
+        %td= step.name
+        %td= step.product.name
+        %td= link_to 'Show', step
+        %td= link_to 'Edit', edit_step_path(step)
+        %td= link_to 'Destroy', step, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Step', new_step_path

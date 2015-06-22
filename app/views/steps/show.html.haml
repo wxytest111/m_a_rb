@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @step.number
+%p
+  %b Name:
+  = @step.name
+%p
+  %b Product:
+  = @step.product.name
+
+= link_to 'Edit', edit_step_path(@step)
+\|
+= link_to 'Back', steps_path
