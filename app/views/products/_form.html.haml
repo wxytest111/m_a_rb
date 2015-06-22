@@ -10,6 +10,9 @@
     = f.label :product_type_id, '所属分类'
     = f.collection_select :product_type_id, ProductType.all, :id, :name, {:selected=>(@product.product_type_id)}
   .field
+    = f.label :description, '分类小描述'
+    = f.text_field :description
+  .field
     = f.label :name, '名称'
     = f.text_field :name
   .field
