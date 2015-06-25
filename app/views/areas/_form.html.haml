@@ -1,0 +1,16 @@
+= form_for @area do |f|
+  - if @area.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@area.errors.count, "error")} prohibited this area from being saved:"
+      %ul
+        - @area.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name, '名字'
+    = f.text_field :name
+  .field
+    = f.label :city_id, '所属城市'
+    = f.collection_select :city_id, City.all, :id, :name, {:selected=>(@area.city_id)}
+  .actions
+    = f.submit 'Save'

@@ -1,4 +1,12 @@
 M3::Application.routes.draw do
+  resources :orders
+
+  resources :streets
+
+  resources :areas
+
+  resources :cities
+
   resources :product_types
 
   resources :product_details

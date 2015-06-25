@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @order.name
+%p
+  %b Mobile:
+  = @order.mobile
+%p
+  %b Other name:
+  = @order.other_name
+%p
+  %b Other mobile:
+  = @order.other_mobile
+%p
+  %b Street:
+  = @order.street
+%p
+  %b Address:
+  = @order.address
+%p
+  %b Postscript:
+  = @order.postscript
+%p
+  %b Order time:
+  = @order.order_time
+%p
+  %b Status:
+  = @order.status
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path

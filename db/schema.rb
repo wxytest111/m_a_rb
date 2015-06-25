@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622025255) do
+ActiveRecord::Schema.define(version: 20150625091220) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "url",        limit: 255
@@ -37,9 +37,24 @@ ActiveRecord::Schema.define(version: 20150622025255) do
   add_index "appointments", ["product_id"], name: "index_appointments_on_product_id", using: :btree
   add_index "appointments", ["service_id"], name: "index_appointments_on_service_id", using: :btree
 
+  create_table "areas", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "city_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "areas", ["city_id"], name: "index_areas_on_city_id", using: :btree
+
   create_table "check_codes", force: :cascade do |t|
     t.string   "code",       limit: 255
     t.string   "mobile",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -66,6 +81,30 @@ ActiveRecord::Schema.define(version: 20150622025255) do
 
   add_index "grabs", ["appointment_id"], name: "index_grabs_on_appointment_id", using: :btree
   add_index "grabs", ["worker_id"], name: "index_grabs_on_worker_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "mobile",       limit: 255
+    t.string   "other_name",   limit: 255
+    t.string   "other_mobile", limit: 255
+    t.integer  "street_id",    limit: 4
+    t.string   "address",      limit: 255
+    t.string   "postscript",   limit: 255
+    t.datetime "order_time"
+    t.integer  "status",       limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "customer_id",  limit: 4
+    t.integer  "worker_id",    limit: 4
+    t.integer  "product_id",   limit: 4
+    t.datetime "from_time"
+    t.datetime "end_time"
+  end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+  add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
+  add_index "orders", ["street_id"], name: "index_orders_on_street_id", using: :btree
+  add_index "orders", ["worker_id"], name: "index_orders_on_worker_id", using: :btree
 
   create_table "product_details", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -121,6 +160,15 @@ ActiveRecord::Schema.define(version: 20150622025255) do
 
   add_index "steps", ["product_id"], name: "index_steps_on_product_id", using: :btree
 
+  create_table "streets", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "area_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "streets", ["area_id"], name: "index_streets_on_area_id", using: :btree
+
   create_table "tokens", force: :cascade do |t|
     t.string   "token",       limit: 255
     t.integer  "customer_id", limit: 4
@@ -151,9 +199,15 @@ ActiveRecord::Schema.define(version: 20150622025255) do
   add_foreign_key "appointments", "customers"
   add_foreign_key "appointments", "products"
   add_foreign_key "appointments", "services"
+  add_foreign_key "areas", "cities"
   add_foreign_key "grabs", "appointments"
   add_foreign_key "grabs", "workers"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "streets"
+  add_foreign_key "orders", "workers"
   add_foreign_key "product_details", "products"
   add_foreign_key "products", "product_types"
   add_foreign_key "steps", "products"
+  add_foreign_key "streets", "areas"
 end
