@@ -5,4 +5,5 @@ class Order < ActiveRecord::Base
   belongs_to :customer
   belongs_to :worker
   belongs_to :product
+  has_one :comment
 end

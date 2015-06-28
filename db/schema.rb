@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625091220) do
+ActiveRecord::Schema.define(version: 20150627023345) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "url",        limit: 255
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 20150625091220) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "order_id",    limit: 4
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "comments", ["order_id"], name: "index_comments_on_order_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -200,6 +209,7 @@ ActiveRecord::Schema.define(version: 20150625091220) do
   add_foreign_key "appointments", "products"
   add_foreign_key "appointments", "services"
   add_foreign_key "areas", "cities"
+  add_foreign_key "comments", "orders"
   add_foreign_key "grabs", "appointments"
   add_foreign_key "grabs", "workers"
   add_foreign_key "orders", "customers"

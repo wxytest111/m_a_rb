@@ -3,4 +3,5 @@ class Product < ActiveRecord::Base
   has_many :product_details
   has_many :services
   has_many :steps
+  has_many :orders
 end

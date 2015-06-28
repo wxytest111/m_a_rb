@@ -1,4 +1,6 @@
 M3::Application.routes.draw do
+  resources :comments
+
   resources :orders
 
   resources :streets
