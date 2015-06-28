@@ -6,4 +6,5 @@ class Customer < ActiveRecord::Base
   has_one :token
   has_many :appointments
   has_many :orders
+  has_many :coupons
 end

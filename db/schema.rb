@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627023345) do
+ActiveRecord::Schema.define(version: 20150628125135) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "url",        limit: 255
@@ -68,6 +68,22 @@ ActiveRecord::Schema.define(version: 20150627023345) do
 
   add_index "comments", ["order_id"], name: "index_comments_on_order_id", using: :btree
 
+  create_table "coupons", force: :cascade do |t|
+    t.integer  "customer_id", limit: 4
+    t.integer  "price",       limit: 4
+    t.datetime "end_time"
+    t.integer  "product_id",  limit: 4
+    t.integer  "status",      limit: 4,   default: 0, null: false
+    t.integer  "order_id",    limit: 4
+    t.string   "description", limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "coupons", ["customer_id"], name: "index_coupons_on_customer_id", using: :btree
+  add_index "coupons", ["order_id"], name: "index_coupons_on_order_id", using: :btree
+  add_index "coupons", ["product_id"], name: "index_coupons_on_product_id", using: :btree
+
   create_table "customers", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "mobile",      limit: 255
@@ -108,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150627023345) do
     t.integer  "product_id",   limit: 4
     t.datetime "from_time"
     t.datetime "end_time"
+    t.integer  "price",        limit: 4
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
@@ -210,6 +227,9 @@ ActiveRecord::Schema.define(version: 20150627023345) do
   add_foreign_key "appointments", "services"
   add_foreign_key "areas", "cities"
   add_foreign_key "comments", "orders"
+  add_foreign_key "coupons", "customers"
+  add_foreign_key "coupons", "orders"
+  add_foreign_key "coupons", "products"
   add_foreign_key "grabs", "appointments"
   add_foreign_key "grabs", "workers"
   add_foreign_key "orders", "customers"

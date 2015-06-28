@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Customer:
+  = @coupon.customer.mobile if @coupon.customer
+%p
+  %b Price:
+  = @coupon.price
+%p
+  %b End time:
+  = @coupon.end_time
+%p
+  %b Product:
+  = @coupon.product.name if @coupon.product
+%p
+  %b Status:
+  = @coupon.status
+%p
+  %b Description:
+  = @coupon.description
+%p
+  %b Order:
+  = @coupon.order.id if @coupon.order
+
+= link_to 'Edit', edit_coupon_path(@coupon)
+\|
+= link_to 'Back', coupons_path

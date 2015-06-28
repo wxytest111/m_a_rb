@@ -4,4 +4,5 @@ class Product < ActiveRecord::Base
   has_many :services
   has_many :steps
   has_many :orders
+  has_many :coupons
 end

@@ -6,4 +6,5 @@ class Order < ActiveRecord::Base
   belongs_to :worker
   belongs_to :product
   has_one :comment
+  has_one :coupon
 end
