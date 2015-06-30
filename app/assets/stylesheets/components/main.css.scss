@@ -1,0 +1,10 @@
+@import 'colors';
+@import 'mixins';
+@import 'quick-buttons';
+@import 'notifications_labels';
+@import 'page-login';
+@import 'buttons';
+
+.quick-button, .quick-button-small {
+  margin-bottom: 20px;
+}

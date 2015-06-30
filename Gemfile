@@ -49,8 +49,11 @@ group :doc do
 end
 
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 gem 'haml-rails', '~> 0.4'
+
+gem 'devise', '~> 3.4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

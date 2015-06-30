@@ -1,4 +1,7 @@
 M3::Application.routes.draw do
+  devise_for :admins, controllers: { registrations: 'admins/registrations' }
+  resources :admins
+
   resources :worker_streets
 
   resources :coupons
