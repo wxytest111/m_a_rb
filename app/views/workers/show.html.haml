@@ -10,6 +10,15 @@
   %b Avatar:
   = @worker.avatar
 %p
+  %b Description:
+  = @worker.description
+%p
+  %b 服务区域:
+  - all_streets = Street.all
+  - all_streets.each do |street|
+    =check_box_tag 'check_street', street.id, @worker.has_street(street), disabled:true
+    =street.name
+%p
   %b Pic:
   = @worker.pic
 %p
@@ -18,9 +27,6 @@
 %p
   %b Gender:
   = @worker.gender
-%p
-  %b Description:
-  = @worker.description
 %p
   %b Skills:
   = @worker.skills

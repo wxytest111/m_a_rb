@@ -48,10 +48,11 @@
   .field
     = f.label :miss
     = f.number_field :miss
-  .field
+  .field.check_street
     = f.label '服务区域'
-    - Street.all.each do |street|
-      =check_box_tag 'street[]', street.id
+    - all_streets = Street.all
+    - all_streets.each do |street|
+      =check_box_tag 'check_street', street.id, @worker.has_street(street)
       =street.name
   .field
     = f.label :choose_streets

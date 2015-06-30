@@ -38,6 +38,7 @@ class WorkersController < ApplicationController
 
     respond_to do |format|
       if @worker.save
+        set_strees params[:choose_streets], @worker
         format.html { redirect_to @worker, notice: 'Worker was successfully created.' }
         format.json { render action: 'show', status: :created, location: @worker }
       else
@@ -52,6 +53,8 @@ class WorkersController < ApplicationController
   def update
     respond_to do |format|
       if @worker.update(worker_params)
+        set_strees params[:choose_streets], @worker
+
         format.html { redirect_to @worker, notice: 'Worker was successfully updated.' }
         format.json { head :no_content }
       else
@@ -80,5 +83,15 @@ class WorkersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def worker_params
       params.require(:worker).permit(:name, :mobile, :avatar, :pic, :address, :password, :star, :gender, :description, :skills, :success, :cancel, :miss)
+    end
+
+    def set_strees choose_streets, worker
+      worker.streets = []
+      streets = []
+      choose_streets.split(',').each do |street|
+        streets << Street.find(street)
+      end
+      worker.streets = streets
+
     end
 end
