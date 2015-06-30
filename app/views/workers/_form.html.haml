@@ -48,5 +48,13 @@
   .field
     = f.label :miss
     = f.number_field :miss
+  .field
+    = f.label '服务区域'
+    - Street.all.each do |street|
+      =check_box_tag 'street[]', street.id
+      =street.name
+  .field
+    = f.label :choose_streets
+    %input.choose_streets{:name=>'choose_streets'}
   .actions
     = f.submit 'Save'

@@ -1,4 +1,6 @@
 M3::Application.routes.draw do
+  resources :worker_streets
+
   resources :coupons
 
   resources :comments

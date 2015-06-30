@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Worker:
+  = @worker_street.worker.name
+%p
+  %b Street:
+  = @worker_street.street.name
+
+= link_to 'Edit', edit_worker_street_path(@worker_street)
+\|
+= link_to 'Back', worker_streets_path
