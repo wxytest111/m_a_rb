@@ -19,8 +19,8 @@
     = f.label :other_mobile
     = f.text_field :other_mobile
   .field
-    = f.label :street
-    = f.text_field :street
+    = f.label :street_id, '所属街道'
+    = f.collection_select :street_id, Street.all, :id, :name, {:selected=>(@order.street_id)}
   .field
     = f.label :address
     = f.text_field :address

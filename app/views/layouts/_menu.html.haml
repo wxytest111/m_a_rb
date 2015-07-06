@@ -1,0 +1,65 @@
+.col-sm-2.main-menu-span
+  .sidebar-nav.nav-collapse.collapse.navbar-collapse
+    %ul.nav.nav-tabs.nav-stacked.main-menu
+      %li
+        %a{:href => workers_path}
+          %i.fa.fa-home.icon
+          %span.hidden-sm 美容师
+      %li.active
+        %a{:href => coupons_path}
+          %i.fa.fa-eye
+          %span.hidden-sm 用户优惠券
+      %li
+        %a{:href => orders_path}
+          %i.fa.fa-edit
+          %span.hidden-sm 订单
+      %li
+        %a{:href => customers_path}
+          %i.fa.fa-bar-chart-o
+          %span.hidden-sm 用户
+      %li
+        %a.dropmenu{:href => "#"}
+          %i.fa.fa-folder
+          %span.hidden-sm 地理信息
+        %ul
+          %li
+            %a.submenu{:href => cities_path}
+              %i.fa.fa-file
+              %span.hidden-sm 城市
+          %li
+            %a.submenu{:href => areas_path}
+              %i.fa.fa-file
+              %span.hidden-sm 区
+          %li
+            %a.submenu{:href => streets_path}
+              %i.fa.fa-file
+              %span.hidden-sm 街道
+      %li
+        %a{:href => "typography.html"}
+          %i.fa.fa-font
+          %span.hidden-sm Typography
+      %li
+        %a.dropmenu{:href => "ui.html#"}
+          %i.fa.fa-star
+          %span.hidden-sm Icons
+        %ul
+          %li
+            %a.submenu{:href => "icons-font-awesome.html"}
+              %i.fa.fa-star
+              %span.hidden-sm Font Awesome
+          %li
+            %a.submenu{:href => "icons-halflings.html"}
+              %i.fa.fa-star
+              %span.hidden-sm Halflings
+          %li
+            %a.submenu{:href => "icons-glyphicons-pro.html"}
+              %i.fa.fa-star
+              %span.hidden-sm Glyphicons PRO
+          %li
+            %a.submenu{:href => "icons-filetypes.html"}
+              %i.fa.fa-star
+              %span.hidden-sm Filetypes
+          %li
+            %a.submenu{:href => "icons-social.html"}
+              %i.fa.fa-star
+              %span.hidden-sm Social

@@ -6,4 +6,6 @@
   / <script data-main="http://static.emeidaojia.com/static/main_520" src="http://static.emeidaojia.com/static/require_520.js"></script>
   = stylesheet_link_tag  "application"
   = stylesheet_link_tag  "#{controller.controller_name}"
+  /[if lt IE 9 ]
+    = stylesheet_link_tag  "style-ie9"
   %title 管理

@@ -28,5 +28,9 @@ module M3
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
 
+    config.to_prepare do
+      Devise::SessionsController.layout "sessions"
+    end
+
   end
 end
