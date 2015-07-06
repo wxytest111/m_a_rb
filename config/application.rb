@@ -30,6 +30,7 @@ module M3
 
     config.to_prepare do
       Devise::SessionsController.layout "sessions"
+      Devise::RegistrationsController.layout "registrations"
     end
 
   end
