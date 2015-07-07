@@ -16,10 +16,10 @@
   = @product.current_price
 %p
   %b 适用:
-  = @product.applicable
+  = raw @product.applicable
 %p
   %b 效果:
-  = @product.effect
+  = raw @product.effect
 
 = link_to 'Edit', edit_product_path(@product)
 \|

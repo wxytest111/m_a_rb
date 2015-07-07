@@ -4,7 +4,7 @@
   %thead
     %tr
       %th Name
-      %th Description
+      -#%th Description
       %th Product
       %th
       %th
@@ -14,7 +14,7 @@
     - @product_details.each do |product_detail|
       %tr
         %td= product_detail.name
-        %td= product_detail.description
+        -#%td= product_detail.description
         %td= product_detail.product.name
         %td= link_to 'Show', product_detail
         %td= link_to 'Edit', edit_product_detail_path(product_detail)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630072759) do
+ActiveRecord::Schema.define(version: 20150707125212) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at",                                      null: false
@@ -177,8 +177,8 @@ ActiveRecord::Schema.define(version: 20150630072759) do
     t.integer  "original_price",  limit: 4
     t.integer  "current_price",   limit: 4
     t.string   "service_pic",     limit: 255
-    t.string   "applicable",      limit: 255
-    t.string   "effect",          limit: 255
+    t.text     "applicable",      limit: 65535
+    t.text     "effect",          limit: 65535
     t.integer  "product_type_id", limit: 4
   end
 
