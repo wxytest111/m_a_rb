@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707125212) do
+ActiveRecord::Schema.define(version: 20150707140114) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at",                                      null: false
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20150707125212) do
     t.text     "applicable",      limit: 65535
     t.text     "effect",          limit: 65535
     t.integer  "product_type_id", limit: 4
+    t.text     "period",          limit: 65535
   end
 
   add_index "products", ["product_type_id"], name: "index_products_on_product_type_id", using: :btree
