@@ -59,7 +59,7 @@ M3::Application.configure do
 
   # Precompile additional assets.
   # application.js.coffee, application.css.sass, and all non-JS/CSS in app/assets folder are already added.
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( products.js product_details.js products.css product_details.css registration.css session.css style-ie9.css)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
