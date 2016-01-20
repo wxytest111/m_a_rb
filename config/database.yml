@@ -6,14 +6,13 @@
 
 mysql: &mysql
   adapter: mysql2
-  database: m3
+  database: m001
   reconnect: true
   port: 3306
 
 development:
   <<: *mysql
   username: root
-  password: wxytest1
   host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
@@ -23,21 +22,12 @@ development:
 qa:
   <<: *mysql
   username: root
-  password: wxytest1
   host: 127.0.0.1
   
 test:
   <<: *mysql
   username: root
-  password: wxytest1
   host: 127.0.0.1
-
-#production:
-#  <<: *mysql
-#  username: zaotai2
-#  password: wangxinyu1
-#  database: m3_prod
-#  host: 127.0.0.1
 
 production:
   <<: *mysql
