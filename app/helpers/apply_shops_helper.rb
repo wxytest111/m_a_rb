@@ -1,0 +1,2 @@
+module ApplyShopsHelper
+end

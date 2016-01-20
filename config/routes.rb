@@ -1,4 +1,14 @@
 M3::Application.routes.draw do
+  resources :pay_records
+
+  resources :apply_shops
+
+  resources :shop_customers
+
+  resources :shops
+
+  resources :steps
+
   resources :products
 
   resources :admins

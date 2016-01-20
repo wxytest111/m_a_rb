@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Customer:
+  = @pay_record.customer
+%p
+  %b Product:
+  = @pay_record.product
+%p
+  %b Shop:
+  = @pay_record.shop
+%p
+  %b Pay state:
+  = @pay_record.pay_state
+%p
+  %b Pay num:
+  = @pay_record.pay_num
+%p
+  %b Pay time:
+  = @pay_record.pay_time
+%p
+  %b Total count:
+  = @pay_record.total_count
+%p
+  %b Left count:
+  = @pay_record.left_count
+
+= link_to 'Edit', edit_pay_record_path(@pay_record)
+\|
+= link_to 'Back', pay_records_path

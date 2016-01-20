@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120132745) do
+ActiveRecord::Schema.define(version: 20160120133808) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "username",   limit: 255
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 20160120132745) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "apply_shops", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "sex",        limit: 4
+    t.string   "tel",        limit: 255
+    t.string   "email",      limit: 255
+    t.string   "creid",      limit: 255
+    t.string   "company",    limit: 255
+    t.integer  "shop_id",    limit: 4
+    t.integer  "state",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "apply_shops", ["shop_id"], name: "index_apply_shops_on_shop_id", using: :btree
 
   create_table "birds", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -69,6 +84,23 @@ ActiveRecord::Schema.define(version: 20160120132745) do
 
   add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
 
+  create_table "pay_records", force: :cascade do |t|
+    t.integer  "customer_id", limit: 4
+    t.integer  "product_id",  limit: 4
+    t.integer  "shop_id",     limit: 4
+    t.integer  "pay_state",   limit: 4
+    t.integer  "pay_num",     limit: 4
+    t.datetime "pay_time"
+    t.integer  "total_count", limit: 4
+    t.integer  "left_count",  limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "pay_records", ["customer_id"], name: "index_pay_records_on_customer_id", using: :btree
+  add_index "pay_records", ["product_id"], name: "index_pay_records_on_product_id", using: :btree
+  add_index "pay_records", ["shop_id"], name: "index_pay_records_on_shop_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
@@ -90,7 +122,51 @@ ActiveRecord::Schema.define(version: 20160120132745) do
 
   add_index "products", ["admin_id"], name: "index_products_on_admin_id", using: :btree
 
+  create_table "shop_customers", force: :cascade do |t|
+    t.integer  "state",       limit: 4
+    t.integer  "shop_id",     limit: 4
+    t.integer  "customer_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "shop_customers", ["customer_id"], name: "index_shop_customers_on_customer_id", using: :btree
+  add_index "shop_customers", ["shop_id"], name: "index_shop_customers_on_shop_id", using: :btree
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "uuid",          limit: 255
+    t.string   "title",         limit: 255
+    t.string   "name",          limit: 255
+    t.integer  "sex",           limit: 4
+    t.string   "tel",           limit: 255
+    t.string   "email",         limit: 255
+    t.string   "creid",         limit: 255
+    t.string   "company",       limit: 255
+    t.string   "login_name",    limit: 255
+    t.string   "login_pass",    limit: 255
+    t.integer  "subshop_count", limit: 4
+    t.integer  "level",         limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.integer  "number",     limit: 4
+    t.integer  "product_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "steps", ["product_id"], name: "index_steps_on_product_id", using: :btree
+
+  add_foreign_key "apply_shops", "shops"
   add_foreign_key "customers", "districts"
   add_foreign_key "districts", "cities"
+  add_foreign_key "pay_records", "customers"
+  add_foreign_key "pay_records", "products"
+  add_foreign_key "pay_records", "shops"
   add_foreign_key "products", "admins"
+  add_foreign_key "shop_customers", "customers"
+  add_foreign_key "shop_customers", "shops"
+  add_foreign_key "steps", "products"
 end

@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @apply_shop.name
+%p
+  %b Sex:
+  = @apply_shop.sex
+%p
+  %b Tel:
+  = @apply_shop.tel
+%p
+  %b Email:
+  = @apply_shop.email
+%p
+  %b Creid:
+  = @apply_shop.creid
+%p
+  %b Company:
+  = @apply_shop.company
+%p
+  %b Shop:
+  = @apply_shop.shop
+%p
+  %b State:
+  = @apply_shop.state
+
+= link_to 'Edit', edit_apply_shop_path(@apply_shop)
+\|
+= link_to 'Back', apply_shops_path

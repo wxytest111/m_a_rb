@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Uuid:
+  = @shop.uuid
+%p
+  %b Title:
+  = @shop.title
+%p
+  %b Name:
+  = @shop.name
+%p
+  %b Sex:
+  = @shop.sex
+%p
+  %b Tel:
+  = @shop.tel
+%p
+  %b Email:
+  = @shop.email
+%p
+  %b Creid:
+  = @shop.creid
+%p
+  %b Company:
+  = @shop.company
+%p
+  %b Login name:
+  = @shop.login_name
+%p
+  %b Login pass:
+  = @shop.login_pass
+%p
+  %b Subshop count:
+  = @shop.subshop_count
+%p
+  %b Level:
+  = @shop.level
+
+= link_to 'Edit', edit_shop_path(@shop)
+\|
+= link_to 'Back', shops_path

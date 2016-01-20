@@ -1,0 +1,35 @@
+%h1 Listing apply_shops
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Sex
+      %th Tel
+      %th Email
+      %th Creid
+      %th Company
+      %th Shop
+      %th State
+      %th
+      %th
+      %th
+
+  %tbody
+    - @apply_shops.each do |apply_shop|
+      %tr
+        %td= apply_shop.name
+        %td= apply_shop.sex
+        %td= apply_shop.tel
+        %td= apply_shop.email
+        %td= apply_shop.creid
+        %td= apply_shop.company
+        %td= apply_shop.shop
+        %td= apply_shop.state
+        %td= link_to 'Show', apply_shop
+        %td= link_to 'Edit', edit_apply_shop_path(apply_shop)
+        %td= link_to 'Destroy', apply_shop, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Apply shop', new_apply_shop_path

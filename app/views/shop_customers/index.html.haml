@@ -1,0 +1,25 @@
+%h1 Listing shop_customers
+
+%table
+  %thead
+    %tr
+      %th State
+      %th Shop
+      %th Customer
+      %th
+      %th
+      %th
+
+  %tbody
+    - @shop_customers.each do |shop_customer|
+      %tr
+        %td= shop_customer.state
+        %td= shop_customer.shop
+        %td= shop_customer.customer
+        %td= link_to 'Show', shop_customer
+        %td= link_to 'Edit', edit_shop_customer_path(shop_customer)
+        %td= link_to 'Destroy', shop_customer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Shop customer', new_shop_customer_path

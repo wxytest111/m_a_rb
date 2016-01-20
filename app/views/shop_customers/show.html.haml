@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b State:
+  = @shop_customer.state
+%p
+  %b Shop:
+  = @shop_customer.shop
+%p
+  %b Customer:
+  = @shop_customer.customer
+
+= link_to 'Edit', edit_shop_customer_path(@shop_customer)
+\|
+= link_to 'Back', shop_customers_path

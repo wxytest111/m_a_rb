@@ -1,0 +1,35 @@
+%h1 Listing pay_records
+
+%table
+  %thead
+    %tr
+      %th Customer
+      %th Product
+      %th Shop
+      %th Pay state
+      %th Pay num
+      %th Pay time
+      %th Total count
+      %th Left count
+      %th
+      %th
+      %th
+
+  %tbody
+    - @pay_records.each do |pay_record|
+      %tr
+        %td= pay_record.customer
+        %td= pay_record.product
+        %td= pay_record.shop
+        %td= pay_record.pay_state
+        %td= pay_record.pay_num
+        %td= pay_record.pay_time
+        %td= pay_record.total_count
+        %td= pay_record.left_count
+        %td= link_to 'Show', pay_record
+        %td= link_to 'Edit', edit_pay_record_path(pay_record)
+        %td= link_to 'Destroy', pay_record, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pay record', new_pay_record_path

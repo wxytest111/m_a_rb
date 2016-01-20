@@ -1,0 +1,43 @@
+%h1 Listing shops
+
+%table
+  %thead
+    %tr
+      %th Uuid
+      %th Title
+      %th Name
+      %th Sex
+      %th Tel
+      %th Email
+      %th Creid
+      %th Company
+      %th Login name
+      %th Login pass
+      %th Subshop count
+      %th Level
+      %th
+      %th
+      %th
+
+  %tbody
+    - @shops.each do |shop|
+      %tr
+        %td= shop.uuid
+        %td= shop.title
+        %td= shop.name
+        %td= shop.sex
+        %td= shop.tel
+        %td= shop.email
+        %td= shop.creid
+        %td= shop.company
+        %td= shop.login_name
+        %td= shop.login_pass
+        %td= shop.subshop_count
+        %td= shop.level
+        %td= link_to 'Show', shop
+        %td= link_to 'Edit', edit_shop_path(shop)
+        %td= link_to 'Destroy', shop, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Shop', new_shop_path
