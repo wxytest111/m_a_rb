@@ -1,7 +1,6 @@
 M3::Application.routes.draw do
-  devise_for :admins
-
-  resources :admins
+  devise_for :birds
+  resources :birds
 
   root 'welcome#index'
   get 'welcome/index'
