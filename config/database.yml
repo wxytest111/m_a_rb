@@ -31,7 +31,7 @@ test:
 
 production:
   <<: *mysql
-  username: <%= ENV['M3_DB_USER'] %>
-  password: <%= ENV['M3_DB_PASSWORD'] %>
-  host: <%= ENV['M3_DB_HOST'] %>
-  database: <%= ENV['M3_DB_NAME'] %>
+  username: <%= ENV['M_DB_USER'] %>
+  password: <%= ENV['M_DB_PASSWORD'] %>
+  host: <%= ENV['M_DB_HOST'] %>
+  database: <%= ENV['M_DB_NAME'] %>
