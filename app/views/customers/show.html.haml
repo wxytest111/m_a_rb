@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Uin:
+  = @customer.uin
+%p
+  %b Passwd:
+  = @customer.passwd
+%p
+  %b Name:
+  = @customer.name
+%p
+  %b Sex:
+  = @customer.sex
+%p
+  %b Tel:
+  = @customer.tel
+%p
+  %b Address:
+  = @customer.address
+%p
+  %b District:
+  = @customer.district
+
+= link_to 'Edit', edit_customer_path(@customer)
+\|
+= link_to 'Back', customers_path

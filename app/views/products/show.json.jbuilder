@@ -1,0 +1,1 @@
+json.extract! @product, :id, :name, :description, :duration, :period, :effect, :applicable, :kind, :howuse, :total_count, :pic_path, :show_price, :pay_price, :state, :admin_id, :created_at, :updated_at

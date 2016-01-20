@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Description:
+  = @product.description
+%p
+  %b Duration:
+  = @product.duration
+%p
+  %b Period:
+  = @product.period
+%p
+  %b Effect:
+  = @product.effect
+%p
+  %b Applicable:
+  = @product.applicable
+%p
+  %b Kind:
+  = @product.kind
+%p
+  %b Howuse:
+  = @product.howuse
+%p
+  %b Total count:
+  = @product.total_count
+%p
+  %b Pic path:
+  = @product.pic_path
+%p
+  %b Show price:
+  = @product.show_price
+%p
+  %b Pay price:
+  = @product.pay_price
+%p
+  %b State:
+  = @product.state
+%p
+  %b Admin:
+  = @product.admin
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

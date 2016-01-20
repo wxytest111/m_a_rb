@@ -1,4 +1,14 @@
 M3::Application.routes.draw do
+  resources :products
+
+  resources :admins
+
+  resources :customers
+
+  resources :districts
+
+  resources :cities
+
   devise_for :birds
   resources :birds
 
