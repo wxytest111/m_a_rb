@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Customer:
+  = @subscribe.customer
+%p
+  %b Start time:
+  = @subscribe.start_time
+%p
+  %b End time:
+  = @subscribe.end_time
+%p
+  %b Product:
+  = @subscribe.product
+%p
+  %b Pay record:
+  = @subscribe.pay_record
+%p
+  %b Name:
+  = @subscribe.name
+%p
+  %b Sex:
+  = @subscribe.sex
+%p
+  %b Tel:
+  = @subscribe.tel
+%p
+  %b District:
+  = @subscribe.district
+%p
+  %b Address:
+  = @subscribe.address
+%p
+  %b Waitress:
+  = @subscribe.waitress
+%p
+  %b State:
+  = @subscribe.state
+
+= link_to 'Edit', edit_subscribe_path(@subscribe)
+\|
+= link_to 'Back', subscribes_path

@@ -1,4 +1,8 @@
 M3::Application.routes.draw do
+  resources :subscribes
+
+  resources :waitresses
+
   resources :pay_records
 
   resources :apply_shops

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @waitress.name
+%p
+  %b Description:
+  = @waitress.description
+
+= link_to 'Edit', edit_waitress_path(@waitress)
+\|
+= link_to 'Back', waitresses_path

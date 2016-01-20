@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120133808) do
+ActiveRecord::Schema.define(version: 20160120134533) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "username",   limit: 255
@@ -159,6 +159,36 @@ ActiveRecord::Schema.define(version: 20160120133808) do
 
   add_index "steps", ["product_id"], name: "index_steps_on_product_id", using: :btree
 
+  create_table "subscribes", force: :cascade do |t|
+    t.integer  "customer_id",   limit: 4
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "product_id",    limit: 4
+    t.integer  "pay_record_id", limit: 4
+    t.string   "name",          limit: 255
+    t.integer  "sex",           limit: 4
+    t.string   "tel",           limit: 255
+    t.integer  "district_id",   limit: 4
+    t.string   "address",       limit: 255
+    t.integer  "waitress_id",   limit: 4
+    t.integer  "state",         limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "subscribes", ["customer_id"], name: "index_subscribes_on_customer_id", using: :btree
+  add_index "subscribes", ["district_id"], name: "index_subscribes_on_district_id", using: :btree
+  add_index "subscribes", ["pay_record_id"], name: "index_subscribes_on_pay_record_id", using: :btree
+  add_index "subscribes", ["product_id"], name: "index_subscribes_on_product_id", using: :btree
+  add_index "subscribes", ["waitress_id"], name: "index_subscribes_on_waitress_id", using: :btree
+
+  create_table "waitresses", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   add_foreign_key "apply_shops", "shops"
   add_foreign_key "customers", "districts"
   add_foreign_key "districts", "cities"
@@ -169,4 +199,9 @@ ActiveRecord::Schema.define(version: 20160120133808) do
   add_foreign_key "shop_customers", "customers"
   add_foreign_key "shop_customers", "shops"
   add_foreign_key "steps", "products"
+  add_foreign_key "subscribes", "customers"
+  add_foreign_key "subscribes", "districts"
+  add_foreign_key "subscribes", "pay_records"
+  add_foreign_key "subscribes", "products"
+  add_foreign_key "subscribes", "waitresses"
 end

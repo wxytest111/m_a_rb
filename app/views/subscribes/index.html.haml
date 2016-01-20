@@ -1,0 +1,43 @@
+%h1 Listing subscribes
+
+%table
+  %thead
+    %tr
+      %th Customer
+      %th Start time
+      %th End time
+      %th Product
+      %th Pay record
+      %th Name
+      %th Sex
+      %th Tel
+      %th District
+      %th Address
+      %th Waitress
+      %th State
+      %th
+      %th
+      %th
+
+  %tbody
+    - @subscribes.each do |subscribe|
+      %tr
+        %td= subscribe.customer
+        %td= subscribe.start_time
+        %td= subscribe.end_time
+        %td= subscribe.product
+        %td= subscribe.pay_record
+        %td= subscribe.name
+        %td= subscribe.sex
+        %td= subscribe.tel
+        %td= subscribe.district
+        %td= subscribe.address
+        %td= subscribe.waitress
+        %td= subscribe.state
+        %td= link_to 'Show', subscribe
+        %td= link_to 'Edit', edit_subscribe_path(subscribe)
+        %td= link_to 'Destroy', subscribe, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Subscribe', new_subscribe_path

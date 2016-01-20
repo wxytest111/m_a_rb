@@ -1,0 +1,2 @@
+module WaitressesHelper
+end

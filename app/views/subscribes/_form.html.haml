@@ -1,0 +1,46 @@
+= form_for @subscribe do |f|
+  - if @subscribe.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@subscribe.errors.count, "error")} prohibited this subscribe from being saved:"
+      %ul
+        - @subscribe.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :customer
+    = f.text_field :customer
+  .field
+    = f.label :start_time
+    = f.datetime_select :start_time
+  .field
+    = f.label :end_time
+    = f.datetime_select :end_time
+  .field
+    = f.label :product
+    = f.text_field :product
+  .field
+    = f.label :pay_record
+    = f.text_field :pay_record
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :sex
+    = f.number_field :sex
+  .field
+    = f.label :tel
+    = f.text_field :tel
+  .field
+    = f.label :district
+    = f.text_field :district
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :waitress
+    = f.text_field :waitress
+  .field
+    = f.label :state
+    = f.number_field :state
+  .actions
+    = f.submit 'Save'

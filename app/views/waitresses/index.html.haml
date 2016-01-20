@@ -1,0 +1,23 @@
+%h1 Listing waitresses
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @waitresses.each do |waitress|
+      %tr
+        %td= waitress.name
+        %td= waitress.description
+        %td= link_to 'Show', waitress
+        %td= link_to 'Edit', edit_waitress_path(waitress)
+        %td= link_to 'Destroy', waitress, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Waitress', new_waitress_path
