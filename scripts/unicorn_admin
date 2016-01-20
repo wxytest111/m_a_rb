@@ -13,9 +13,9 @@
 ### END INIT INFO
 
 DAEMON=unicorn
-DAEMON_OPTS="-c /opt/works/m_a_rb/config/unicorn.rb -D"
+DAEMON_OPTS="-c /opt/works/m_a_rb/config/unicorn.rb -E production -D"
 NAME=unicorn
-DESC="unicorn app for m3"
+DESC="unicorn app for m_a_rb"
 PID=/var/run/m_a_rb.pid
 
 case "$1" in
